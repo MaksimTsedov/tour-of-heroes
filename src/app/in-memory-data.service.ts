@@ -1,6 +1,7 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Hero } from './hero';
 import { Injectable } from '@angular/core';
+import { HeroClass } from './HeroClass.enum';
 
 @Injectable({
   providedIn: 'root',
@@ -8,16 +9,16 @@ import { Injectable } from '@angular/core';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const heroes = [
-      { id: 11, name: 'Dr Nice' },
-      { id: 12, name: 'Narco' },
-      { id: 13, name: 'Bombasto' },
-      { id: 14, name: 'Celeritas' },
-      { id: 15, name: 'Magneta' },
-      { id: 16, name: 'RubberMan' },
-      { id: 17, name: 'Dynama' },
-      { id: 18, name: 'Dr IQ' },
-      { id: 19, name: 'Magma' },
-      { id: 20, name: 'Tornado' }
+      { id: 11, name: 'Dr Nice', heroClass: HeroClass.Warrior, isEvil: false },
+      { id: 12, name: 'Narco', heroClass: HeroClass.Archer, isEvil: false },
+      { id: 13, name: 'Bombasto', heroClass: HeroClass.Mage, isEvil: false },
+      { id: 14, name: 'Celeritas', heroClass: HeroClass.Mage, isEvil: true },
+      { id: 15, name: 'Magneta', heroClass: HeroClass.Assassin, isEvil: true },
+      { id: 16, name: 'RubberMan', heroClass: HeroClass.Priest, isEvil: false },
+      { id: 17, name: 'Dynama', heroClass: HeroClass.Warrior, isEvil: true },
+      { id: 18, name: 'Dr IQ', heroClass: HeroClass.Archer, isEvil: false },
+      { id: 19, name: 'Magma', heroClass: HeroClass.Warrior, isEvil: false },
+      { id: 20, name: 'Tornado', heroClass: HeroClass.Archer, isEvil: true }
     ];
     return {heroes};
   }
