@@ -15,6 +15,15 @@ import { HeroesComponent } from './heroes/heroes.component';
 import { HeroSearchComponent } from './hero-search/hero-search.component';
 import { MessagesComponent } from './messages/messages.component';
 import { HeroesSlidesComponent } from './heroes-slides/heroes-slides.component';
+import { WarriorSlideComponent } from './slides/warrior-slide/warrior-slide.component';
+import { SlideDirective } from './heroes-slides/slide.directive';
+import { SlidesArrowsComponent } from './slides-arrows/slides-arrows.component';
+import { ArcherSlideComponent } from './slides/archer-slide/archer-slide.component';
+import { MageSlideComponent } from './slides/mage-slide/mage-slide.component';
+import { AssassinSlideComponent } from './slides/assassin-slide/assassin-slide.component';
+import { PriestSlideComponent } from './slides/priest-slide/priest-slide.component';
+import { SlideComponent } from './slides/slide/slide.component';
+import { GetClassPipe } from './getClass.pipe';
 
 @NgModule({
    imports: [
@@ -33,7 +42,23 @@ import { HeroesSlidesComponent } from './heroes-slides/heroes-slides.component';
       HeroDetailComponent,
       MessagesComponent,
       HeroSearchComponent,
-      HeroesSlidesComponent
+      HeroesSlidesComponent,
+      WarriorSlideComponent,
+      ArcherSlideComponent,
+      MageSlideComponent,
+      AssassinSlideComponent,
+      PriestSlideComponent,
+      SlideComponent,
+      SlideDirective,
+      SlidesArrowsComponent,
+      GetClassPipe
+   ],
+   entryComponents: [
+      WarriorSlideComponent,
+      ArcherSlideComponent,
+      MageSlideComponent,
+      AssassinSlideComponent,
+      PriestSlideComponent,
    ],
    bootstrap: [
       AppComponent
