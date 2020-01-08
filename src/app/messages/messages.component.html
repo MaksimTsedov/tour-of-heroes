@@ -1,8 +1,17 @@
 <div *ngIf="messageService.messages.length">
 
-  <h2>Messages</h2>
-  <button class="clear"
-          (click)="messageService.clear()">clear</button>
-  <div *ngFor='let message of messageService.messages'> {{message}} </div>
+  <ng-container *ngIf='hiddenLog'>
+    <div class="message message-log">
+      <div *ngFor='let message of messageService.messages'> {{message}} </div>
+    </div>
+  </ng-container>
+
+  <div class="message-body">
+  <p class="message" *ngIf="this.messageService.lastMessage">
+    {{this.messageService.lastMessage}}
+    <img [src]='logImageUrl' (click)='switchLogMode()' />  
+  </p>
+  <button class="clear" (click)="messageService.clear()">clear</button>
+  </div>
 
 </div>
