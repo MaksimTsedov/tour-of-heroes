@@ -8,13 +8,18 @@ import { SlideComponent } from '../slide/slide.component';
   styleUrls: ['./archer-slide.component.css',
     '../slide/slide.component.css']
 })
-export class ArcherSlideComponent implements OnInit, SlideComponent {
-  backgroundColor: { 'background-color': string; };
+export class ArcherSlideComponent extends SlideComponent implements OnInit  {
   bio = 'This archer will fight them with arrows!';
-  hero: Hero;
-  constructor() { }
 
-  ngOnInit() {
+  constructor() {
+    super();
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+  }
+
+  setCurrentClasses(): void {
+    this.currentClasses = [ 'hero-profile', 'archer-slide-background' ];
+  }
 }

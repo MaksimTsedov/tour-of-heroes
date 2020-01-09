@@ -9,10 +9,14 @@ import { Hero } from 'src/app/hero';
 export class SlideComponent implements OnInit {
   @Input() hero: Hero;
   bio = 'default bio';
-  backgroundColor = { 'background-color' : 'lightgreen' };
+  currentClasses: string[];
   constructor() { }
 
   ngOnInit() {
+    this.setCurrentClasses();
   }
 
+  setCurrentClasses() {
+    this.currentClasses = [ 'hero-profile', 'slide-background' ];
+  }
 }

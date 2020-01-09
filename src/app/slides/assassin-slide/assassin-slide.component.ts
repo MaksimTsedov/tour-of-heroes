@@ -8,13 +8,18 @@ import { SlideComponent } from '../slide/slide.component';
   styleUrls: ['./assassin-slide.component.css',
     '../slide/slide.component.css']
 })
-export class AssassinSlideComponent implements OnInit, SlideComponent {
-  backgroundColor: { 'background-color': string; };
+export class AssassinSlideComponent extends SlideComponent implements OnInit  {
   bio = 'This assassin will fulfill any contract!';
-  hero: Hero;
-  constructor() { }
 
-  ngOnInit() {
+  constructor() {
+    super();
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+  }
+
+  setCurrentClasses(): void {
+    this.currentClasses = [ 'hero-profile', 'assassin-slide-background' ];
+  }
 }

@@ -8,14 +8,18 @@ import { SlideComponent } from '../slide/slide.component';
   styleUrls: ['./mage-slide.component.css',
     '../slide/slide.component.css']
 })
-export class MageSlideComponent implements OnInit, SlideComponent {
-  backgroundColor: { 'background-color': string; };
+export class MageSlideComponent extends SlideComponent implements OnInit  {
   bio = 'This mage will destroy everyone with his power of Universe!';
-  hero: Hero;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    super();
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+  }
+
+  setCurrentClasses(): void {
+    this.currentClasses = [ 'hero-profile', 'mage-slide-background' ];
+  }
 }

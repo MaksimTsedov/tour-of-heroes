@@ -8,14 +8,18 @@ import { SlideComponent } from '../slide/slide.component';
   styleUrls: ['./warrior-slide.component.css',
     '../slide/slide.component.css']
 })
-export class WarriorSlideComponent implements OnInit, SlideComponent {
-  backgroundColor: { 'background-color': 'red'; };
+export class WarriorSlideComponent extends SlideComponent implements OnInit  {
   bio = 'This warrior will crush everyone with his sword!';
-  hero: Hero;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    super();
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+  }
+
+  setCurrentClasses() {
+    this.currentClasses = [ 'hero-profile', 'warrior-slide-background' ];
+  }
 }

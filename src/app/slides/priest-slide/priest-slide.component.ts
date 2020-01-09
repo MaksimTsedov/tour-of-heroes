@@ -8,14 +8,18 @@ import { SlideComponent } from '../slide/slide.component';
   styleUrls: ['./priest-slide.component.css',
     '../slide/slide.component.css']
 })
-export class PriestSlideComponent implements OnInit, SlideComponent {
-  backgroundColor: { 'background-color': string; };
+export class PriestSlideComponent extends SlideComponent implements OnInit  {
   bio = 'This priest will heal up everyone!';
-  hero: Hero;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor() {
+    super();
   }
 
+  ngOnInit() {
+    super.ngOnInit();
+  }
+
+  setCurrentClasses(): void {
+    this.currentClasses = [ 'hero-profile', 'priest-slide-background' ];
+  }
 }
