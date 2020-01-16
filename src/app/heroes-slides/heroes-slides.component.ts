@@ -35,10 +35,12 @@ export class HeroesSlidesComponent implements OnInit {
     }
 
     const hero = this.heroes[this.currentHeroIndex];
-    const heroComponent = this.slideMap.getComponentMap()
-      .find(slide => slide.heroClass === hero.heroClass).component;
+    const heroComponent = this.slideMap.getComponentMap();
+    const finds = heroComponent.find(slide => slide.heroClass === hero.heroClass);
+    const dddd = finds
+    .component;
 
-    const componentFactory = this.resolver.resolveComponentFactory(heroComponent);
+    const componentFactory = this.resolver.resolveComponentFactory(dddd);
     const viewcontainerRef = this.slideHost.viewContainerRef;
     viewcontainerRef.clear();
 

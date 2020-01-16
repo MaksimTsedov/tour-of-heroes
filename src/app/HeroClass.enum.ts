@@ -1,7 +1,7 @@
 export enum HeroClass {
-    Warrior,
-    Archer,
-    Mage,
-    Assassin,
-    Priest
+    Warrior = "Warrior",
+    Archer = "Archer",
+    Mage = "Mage",
+    Assassin = "Assassin",
+    Priest = "Priest"
 }

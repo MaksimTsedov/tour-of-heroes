@@ -1,13 +1,41 @@
-<div *ngIf="hero">
 
-  <h2>{{hero.name | uppercase}} Details</h2>
+<div class="container" *ngIf="hero">
+  <h2>{{getHeroName() | uppercase}} Details</h2>
+
   <div><span>id: </span>{{hero.id}}</div>
-  <div>
-    <label>name:
-      <input [(ngModel)]="hero.name" placeholder="name"/>
-    </label>
+  <form (ngSubmit)="save()" #heroForm="ngForm">
+    <div class="form-group">
+      <label for="name">name:
+        <input [(ngModel)]="hero.name" type="text" class="form-control" 
+               placeholder="name" id="name" name="name" required #name="ngModel"/>
+      </label>
+      <div [hidden]="name.valid">
+      Every hero needs its name!
+      </div>
+    </div>
 
-  </div>
-  <button (click)="goBack()">go back</button>
-  <button (click)="save()">save</button>
+    <div class="form-group">
+      <label for="alterEgo">Alter ego:
+        <input [(ngModel)]="hero.alterEgo" type="text" class="form-control" placeholder="alter ego" name="alterEgo" id="alterEgo" />
+      </label>
+    </div>
+
+    <div class="form-group">
+      <select [(ngModel)]="hero.heroClass" name="className" required #className="ngModel">
+        <option *ngFor="let hclass of getHeroClasses()" [value]="hclass">{{hclass}}</option>
+      </select>
+      <div [hidden]="className.valid">
+        Choose class for the hero!
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input [(ngModel)]="hero.isEvil" type="checkbox" id="isEvil" name="malice" />
+      <label for="isEvil"> Hero is evil</label>
+    </div>
+
+    <button (click)="goBack()">go back</button>
+    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">save</button>
+  </form>
+
 </div>

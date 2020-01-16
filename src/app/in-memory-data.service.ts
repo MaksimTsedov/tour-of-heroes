@@ -9,15 +9,15 @@ import { HeroClass } from './HeroClass.enum';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const heroes = [
-      { id: 11, name: 'Dr Nice', heroClass: HeroClass.Warrior, isEvil: false },
+      { id: 11, name: 'Dr Nice', heroClass: HeroClass.Warrior, isEvil: false, alterEgo: "Dr.Dre" },
       { id: 12, name: 'Narco', heroClass: HeroClass.Archer, isEvil: false },
       { id: 13, name: 'Bombasto', heroClass: HeroClass.Mage, isEvil: false },
-      { id: 14, name: 'Celeritas', heroClass: HeroClass.Mage, isEvil: true },
+      { id: 14, name: 'Celeritas', heroClass: HeroClass.Mage, isEvil: true, alterEgo: "Mistress" },
       { id: 15, name: 'Magneta', heroClass: HeroClass.Assassin, isEvil: true },
       { id: 16, name: 'RubberMan', heroClass: HeroClass.Priest, isEvil: false },
-      { id: 17, name: 'Dynama', heroClass: HeroClass.Warrior, isEvil: true },
+      { id: 17, name: 'Dynama', heroClass: HeroClass.Warrior, isEvil: true, alterEgo: "Shari" },
       { id: 18, name: 'Dr IQ', heroClass: HeroClass.Archer, isEvil: false },
-      { id: 19, name: 'Magma', heroClass: HeroClass.Warrior, isEvil: false },
+      { id: 19, name: 'Magma', heroClass: HeroClass.Warrior, isEvil: false, alterEgo: "Ice3" },
       { id: 20, name: 'Tornado', heroClass: HeroClass.Archer, isEvil: true }
     ];
     return {heroes};

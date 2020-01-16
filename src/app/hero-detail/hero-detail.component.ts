@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { HeroService } from '../hero.service';
+import { HeroClass } from '../HeroClass.enum';
 
 @Component({
   selector: 'app-hero-detail',
@@ -16,7 +17,7 @@ export class HeroDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private heroService: HeroService,
     private location: Location
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getHero();
@@ -24,8 +25,24 @@ export class HeroDetailComponent implements OnInit {
 
   getHero(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+    if (id !== 0) {
+      this.heroService.getHero(id)
+        .subscribe(hero => this.hero = hero);
+    } else {
+      this.hero = new Hero();
+    }
+  }
+
+  getHeroName(): string {
+    if (this.hero.name) {
+      return this.hero.name;
+    } else {
+      return `New hero`;
+    }
+  }
+
+  getHeroClasses(): string[] {
+    return this.heroService.getHeroesClasses();
   }
 
   goBack(): void {
@@ -33,7 +50,13 @@ export class HeroDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.heroService.updateHero(this.hero)
-    .subscribe(() => this.goBack());
+    if (this.hero.id) {
+      this.heroService.updateHero(this.hero)
+      .subscribe(() => this.goBack());
+    } else {
+      this.hero.heroClass = HeroClass[this.hero.heroClass];
+      this.heroService.addHero(this.hero)
+      .subscribe(() => this.goBack());
+    }
   }
 }

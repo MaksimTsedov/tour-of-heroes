@@ -4,7 +4,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Hero } from './hero';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, map, tap, toArray } from 'rxjs/operators';
+import { HeroClass } from './HeroClass.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +35,15 @@ export class HeroService {
         tap(_ => this.log(`fetched hero id=${id}`)),
         catchError(this.handleError<Hero>(`getHero id=${id}`))
       );
+  }
+
+  getHeroesClasses(): string[] {
+    let enumValues: Array<string> = [];
+
+    for (let value in HeroClass) {
+      enumValues.push(value);
+    }
+    return enumValues;
   }
 
   updateHero(hero: Hero): Observable<any> {

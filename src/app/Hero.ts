@@ -5,4 +5,5 @@ export class Hero {
     name: string;
     heroClass: HeroClass;
     isEvil: boolean;
+    alterEgo?: string;
 }
