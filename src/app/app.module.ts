@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -24,11 +24,13 @@ import { AssassinSlideComponent } from './slides/assassin-slide/assassin-slide.c
 import { PriestSlideComponent } from './slides/priest-slide/priest-slide.component';
 import { SlideComponent } from './slides/slide/slide.component';
 import { GetClassPipe } from './getClass.pipe';
+import { HeroesAddReactiveComponent } from './heroes-add-reactive/heroes-add-reactive.component';
 
 @NgModule({
    imports: [
       BrowserModule,
       FormsModule,
+      ReactiveFormsModule,
       AppRoutingModule,
       HttpClientModule,
       HttpClientInMemoryWebApiModule.forRoot(
@@ -51,7 +53,8 @@ import { GetClassPipe } from './getClass.pipe';
       SlideComponent,
       SlideDirective,
       SlidesArrowsComponent,
-      GetClassPipe
+      GetClassPipe,
+      HeroesAddReactiveComponent
    ],
    entryComponents: [
       WarriorSlideComponent,

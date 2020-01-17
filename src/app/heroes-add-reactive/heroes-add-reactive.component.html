@@ -1,0 +1,31 @@
+<form [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+  <label>
+    Name:
+    <input type="text" formControlName="name">
+  </label>
+
+  <label>
+    Alter ego:
+    <input type="text" formControlName="alterEgo">
+  </label>
+
+  <div formGroupName="character">
+    <h3>Character of the hero</h3>
+
+    <div>
+      <select formControlName="classHero" required>
+        <option *ngFor="let hclass of getHeroClasses()" [value]="hclass">{{hclass}}</option>
+      </select>
+    </div>
+    <input type="checkbox" formControlName="isEvil" />
+    <label> Hero is evil</label>
+  </div>
+
+  <p>
+    Form Status: {{ heroForm.status }}
+  </p>
+  <button type="submit" [disabled]="!heroForm.valid">Submit hero</button>
+</form>
+<p>
+  <button (click)="setCustomName()">Set custom name to hero</button>
+</p>
