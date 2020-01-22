@@ -2,9 +2,9 @@ import {
   Component, OnInit, Input,
   ViewChild, ComponentFactoryResolver
 } from '@angular/core';
-import { Hero } from '../hero';
+import { Hero } from '../Classes/Hero';
 import { SlideDirective } from './slide.directive';
-import { SlidesMapService } from './slides-map.service';
+import { SlidesMapService } from '../Services/slides-map.service';
 import { SlideComponent } from '../slides/slide/slide.component';
 
 

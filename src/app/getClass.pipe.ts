@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { HeroClass } from './HeroClass.enum';
+import { HeroClass } from './Classes/HeroClass.enum';
 
 @Pipe({
   name: 'getHeroClass'

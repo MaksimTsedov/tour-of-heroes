@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Hero } from 'src/app/hero';
+import { Hero } from 'src/app/Classes/Hero';
 
 @Component({
   selector: 'app-slide',

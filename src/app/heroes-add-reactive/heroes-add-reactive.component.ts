@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { HeroService } from '../hero.service';
-import { HeroClass } from '../HeroClass.enum';
-import { Hero } from '../Hero';
+import { HeroService } from '../Services/hero.service';
+import { HeroClass } from '../Classes/HeroClass.enum';
+import { Hero } from '../Classes/Hero';
 
 @Component({
   selector: 'app-heroes-add-reactive',

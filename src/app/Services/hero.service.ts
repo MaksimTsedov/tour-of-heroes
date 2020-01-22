@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { Hero } from './hero';
+import { Hero } from '../Classes/Hero';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { catchError, map, tap, toArray } from 'rxjs/operators';
-import { HeroClass } from './HeroClass.enum';
+import { HeroClass } from '../Classes/HeroClass.enum';
 
 @Injectable({
   providedIn: 'root'

@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Hero } from '../Hero';
+import { Hero } from '../Classes/Hero';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { HeroService } from '../hero.service';
-import { HeroClass } from '../HeroClass.enum';
+import { HeroService } from '../Services/hero.service';
+import { HeroClass } from '../Classes/HeroClass.enum';
 
 @Component({
   selector: 'app-hero-detail',
