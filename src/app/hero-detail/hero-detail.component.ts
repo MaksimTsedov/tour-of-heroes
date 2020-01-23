@@ -5,7 +5,6 @@ import { Location } from '@angular/common';
 
 import { HeroService } from '../Services/hero.service';
 import { HeroClass } from '../Classes/HeroClass.enum';
-import { SkillService } from '../Services/skill.service';
 
 @Component({
   selector: 'app-hero-detail',

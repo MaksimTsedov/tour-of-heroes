@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { HeroService } from '../Services/hero.service';
-import { HeroClass } from '../Classes/HeroClass.enum';
 import { Hero } from '../Classes/Hero';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-heroes-add-reactive',
@@ -21,7 +21,8 @@ export class HeroesAddReactiveComponent implements OnInit {
 
 
   constructor(private heroService: HeroService,
-    private formBuilder: FormBuilder) { }
+    private formBuilder: FormBuilder,
+    private location: Location) { }
 
   ngOnInit() {
   }
@@ -45,6 +46,8 @@ export class HeroesAddReactiveComponent implements OnInit {
     hero.heroClass = characterControl.get('heroClass').value;
     this.heroService.addHero(hero)
       .subscribe();
+
+    this.location.back();
   }
 
   getHeroClasses(): string[] {

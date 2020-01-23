@@ -6,11 +6,7 @@
     </div>
 
     <div class="form-row">
-      <button type="submit" [disabled]="!form.valid">Save</button>
+      <button type="submit" [disabled]="!form.valid && form.pristine">Save</button>
     </div>
   </form>
-
-  <div *ngIf="payload" class="form-row">
-    <strong>Saved the following values</strong><br>{{payload}}
-  </div>
 </div>

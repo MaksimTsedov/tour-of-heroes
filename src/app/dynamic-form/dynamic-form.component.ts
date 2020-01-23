@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { QuestionBase } from '../Classes/QuestionBase';
 import { FormGroup } from '@angular/forms';
 import { QuestionControlService } from '../Services/question-control.service';
@@ -11,9 +11,9 @@ import { QuestionControlService } from '../Services/question-control.service';
 })
 export class DynamicFormComponent implements OnInit {
 
+  @Output() onsubmit = new EventEmitter<{key: string, value: any}[]>();
   @Input() questions: QuestionBase<any>[]= [];
   form: FormGroup;
-  payload = '';
   
   constructor(private questionControlService: QuestionControlService) { }
 
@@ -22,7 +22,16 @@ export class DynamicFormComponent implements OnInit {
   }
 
   OnSubmit() {
-    this.payload = JSON.stringify(this.form.value);
+    this.onsubmit.emit(this.getFormValues());
   }
 
+  private getFormValues() : {key: string, value: any}[] {
+    let result: {key: string, value: any}[] = [];
+  
+    for (let formControl in this.form.controls) {
+      result.push({ key: formControl, value: this.form.controls[formControl].value});
+    }
+  
+    return result;
+  }
 }

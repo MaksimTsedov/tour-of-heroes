@@ -6,6 +6,7 @@ export class NumberInputQuestion extends InputQuestion<number> {
 
     constructor(options: {} = {}) {
         super(options);
+        super.controlType = 'number';
         super.type = 'number';
         this.min = options['min'] || 0;
         this.max = options['max'] || Number.MAX_SAFE_INTEGER;
