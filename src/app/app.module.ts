@@ -25,6 +25,9 @@ import { PriestSlideComponent } from './slides/priest-slide/priest-slide.compone
 import { SlideComponent } from './slides/slide/slide.component';
 import { GetClassPipe } from './getClass.pipe';
 import { HeroesAddReactiveComponent } from './heroes-add-reactive/heroes-add-reactive.component';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './dynamic-form-question/dynamic-form-question.component';
+import { HeroDynamicComponent } from './hero-dynamic/hero-dynamic.component';
 
 @NgModule({
    imports: [
@@ -54,14 +57,17 @@ import { HeroesAddReactiveComponent } from './heroes-add-reactive/heroes-add-rea
       SlideDirective,
       SlidesArrowsComponent,
       GetClassPipe,
-      HeroesAddReactiveComponent
+      HeroesAddReactiveComponent,
+      DynamicFormComponent,
+      DynamicFormQuestionComponent,
+      HeroDynamicComponent
    ],
    entryComponents: [
       WarriorSlideComponent,
       ArcherSlideComponent,
       MageSlideComponent,
       AssassinSlideComponent,
-      PriestSlideComponent,
+      PriestSlideComponent
    ],
    bootstrap: [
       AppComponent
