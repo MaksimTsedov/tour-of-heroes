@@ -13,7 +13,7 @@
     <h3>Character of the hero</h3>
 
     <div>
-      <select formControlName="classHero" required>
+      <select formControlName="heroClass" required>
         <option *ngFor="let hclass of getHeroClasses()" [value]="hclass">{{hclass}}</option>
       </select>
     </div>
