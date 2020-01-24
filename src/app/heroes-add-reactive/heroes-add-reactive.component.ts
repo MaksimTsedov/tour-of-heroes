@@ -3,6 +3,7 @@ import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { HeroService } from '../Services/hero.service';
 import { Hero } from '../Classes/Hero';
 import { Location } from '@angular/common';
+import { dividedNamesValidator } from '../Validators/divided-names.directive';
 
 @Component({
   selector: 'app-heroes-add-reactive',
@@ -17,7 +18,7 @@ export class HeroesAddReactiveComponent implements OnInit {
       heroClass: [],
       isEvil: []
     })
-  })
+  }, { validators: dividedNamesValidator})
 
 
   constructor(private heroService: HeroService,

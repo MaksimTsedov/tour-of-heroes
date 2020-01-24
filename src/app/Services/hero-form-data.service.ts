@@ -4,6 +4,8 @@ import { InputQuestion } from '../Classes/question-input';
 import { DropdownQuestion } from '../Classes/question-dropdown';
 import { HeroClass } from '../Classes/HeroClass.enum';
 import { CheckboxQuestion } from '../Classes/question-checkbox';
+import { Validators } from '@angular/forms';
+import { dividedNamesValidator } from '../Validators/divided-names.directive';
 
 @Injectable()
 export class HeroFormDataService {
@@ -16,7 +18,7 @@ getHeroData() {
     new InputQuestion<string>({
       key: 'name',
       label: 'Name:',
-      required: true,
+      validators: [Validators.required],
       order: 1,
       placeholder: 'Name'
     }),
@@ -31,8 +33,9 @@ getHeroData() {
      new DropdownQuestion({
       key: 'heroClass',
       label: 'Hero class:',
+      value: HeroClass.Warrior,
       options: this.getHeroClasses(),
-      required: true,
+      validators: [Validators.required],
       order: 3
     }),
 
@@ -40,7 +43,7 @@ getHeroData() {
         key: 'isEvil',
         label: 'Is hero evil',
         value: Boolean.prototype,
-        required: true,
+        validators: [Validators.required],
         order: 4
       })
   ];

@@ -1,6 +1,7 @@
 import { Injectable }   from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { QuestionBase } from '../Classes/QuestionBase';
+import { dividedNamesValidator } from '../Validators/divided-names.directive';
 
 @Injectable()
 export class QuestionControlService {
@@ -10,9 +11,9 @@ export class QuestionControlService {
     let group: any = {};
 
     questions.forEach(question => {
-      group[question.key] = question.required ? new FormControl(question.value || '', Validators.required)
+      group[question.key] = question.validators ? new FormControl(question.value || '', question.validators)
                                               : new FormControl(question.value || '');
     });
-    return new FormGroup(group);
+    return new FormGroup(group, dividedNamesValidator);
   }
 }

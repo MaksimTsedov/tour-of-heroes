@@ -9,6 +9,10 @@
     <input type="text" formControlName="alterEgo">
   </label>
 
+  <div *ngIf="heroForm.errors?.dividedNames && (heroForm.touched || heroForm.dirty)">
+    Name cannot match alter ego.
+  </div>
+
   <div formGroupName="character">
     <h3>Character of the hero</h3>
 
