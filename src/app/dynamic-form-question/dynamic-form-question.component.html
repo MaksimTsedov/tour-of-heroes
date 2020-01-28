@@ -3,17 +3,17 @@
 
   <div class="form-group" [ngSwitch]="question.controlType">
 
-    <input *ngSwitchCase="'input'" class="form-control" [formControlName]="question.key" 
-      [placeholder]="question.placeholder"
-      [id]="question.key" [type]="question.type">
+    <input *ngSwitchCase="'input'" class="form-control" [formControlName]="questionInput.key" 
+      [placeholder]="questionInput.placeholder"
+      [id]="questionInput.key" [type]="questionInput.type">
 
-    <input *ngSwitchCase="'number'" class="form-control" [formControlName]="question.key" 
-      [placeholder]="question.placeholder"
-      [id]="question.key" [type]="question.type" 
-      [min]="question.min" [max]="question.max">
+    <input *ngSwitchCase="'number'" class="form-control" [formControlName]="questionNumber.key" 
+      [placeholder]="questionNumber.placeholder"
+      [id]="questionNumber.key" [type]="questionNumber.type" 
+      [min]="questionNumber.min" [max]="questionNumber.max">
 
-    <select [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key">
-      <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+    <select [id]="questionDropdown.key" *ngSwitchCase="'dropdown'" [formControlName]="questionDropdown.key">
+      <option *ngFor="let opt of questionDropdown.options" [value]="opt.key">{{opt.value}}</option>
     </select>
 
   </div>
