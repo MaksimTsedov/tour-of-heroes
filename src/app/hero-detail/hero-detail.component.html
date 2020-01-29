@@ -37,9 +37,11 @@
       <input [(ngModel)]="hero.isEvil" type="checkbox" id="isEvil" name="malice" />
       <label for="isEvil"> Hero is evil</label>
     </div>
-
-    <button (click)="goBack()">go back</button>
-    <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">save</button>
+    <form [formGroup]="heroForm" (ngSubmit)="save()">
+      <app-skill-form [heroForm]="heroForm"></app-skill-form>
+      <button (click)="goBack()">go back</button>
+      <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">save</button>
+    </form>
   </form>
 
 </div>

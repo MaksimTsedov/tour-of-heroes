@@ -5,6 +5,7 @@ import { Location } from '@angular/common';
 
 import { HeroService } from '../Services/hero.service';
 import { HeroClass } from '../Classes/HeroClass.enum';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-hero-detail',
@@ -13,10 +14,15 @@ import { HeroClass } from '../Classes/HeroClass.enum';
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
+  heroForm = this.formBuilder.group({
+    skills: this.formBuilder.array([])
+  });
+  
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
-    private location: Location
+    private location: Location,
+    private formBuilder: FormBuilder,
   ) { }
 
   ngOnInit(): void {

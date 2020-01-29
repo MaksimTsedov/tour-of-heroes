@@ -4,7 +4,6 @@ import { HeroService } from '../Services/hero.service';
 import { Hero } from '../Classes/hero';
 import { Location } from '@angular/common';
 import { dividedNamesValidator } from '../Validators/divided-names.directive';
-import { Skill } from '../Classes/skill';
 
 @Component({
   selector: 'app-heroes-add-reactive',
@@ -30,22 +29,6 @@ export class HeroesAddReactiveComponent implements OnInit {
   ngOnInit() {
   }
 
-  get skills() { return this.heroForm.controls.skills as FormArray }
-
-  onAddSkill() {
-    if (this.skills.length < 5) {
-      this.skills.push(this.createSkillForm());
-    }
-  }
-
-  private createSkillForm() : FormGroup {
-    return this.formBuilder.group({
-      naming: ['', Validators.required],
-      description: ['', [Validators.required, Validators.maxLength(500)]],
-      level: [,[Validators.min(1), Validators.max(10)]]
-    });
-  }
-
   setCustomName() {
     this.heroForm.patchValue({
       name: 'Crownsail',
@@ -67,10 +50,6 @@ export class HeroesAddReactiveComponent implements OnInit {
       .subscribe();
 
     this.location.back();
-  }
-
-  trackById (index, item: Skill) {
-    return item.id;
   }
 
   getHeroClasses(): string[] {
