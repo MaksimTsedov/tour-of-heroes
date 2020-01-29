@@ -1,6 +1,6 @@
 import { Injectable }   from '@angular/core';
 import { FormControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { QuestionBase } from '../Classes/QuestionBase';
+import { QuestionBase } from '../Classes/question-base';
 import { dividedNamesValidator } from '../Validators/divided-names.directive';
 
 @Injectable()

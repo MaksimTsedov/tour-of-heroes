@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { QuestionBase } from '../Classes/QuestionBase';
+import { QuestionBase } from '../Classes/question-base';
 import { InputQuestion } from '../Classes/question-input';
 import { DropdownQuestion } from '../Classes/question-dropdown';
 import { HeroClass } from '../Classes/HeroClass.enum';

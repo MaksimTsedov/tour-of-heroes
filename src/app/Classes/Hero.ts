@@ -1,5 +1,5 @@
 import { HeroClass } from './HeroClass.enum';
-import { Skill } from './Skill';
+import { Skill } from './skill';
 
 export class Hero {
     id: number;

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SlideItem } from '../Classes/SlideItem';
+import { SlideItem } from '../Classes/slide-item';
 import { WarriorSlideComponent } from '../slides/warrior-slide/warrior-slide.component';
 import { HeroClass } from '../Classes/HeroClass.enum';
 import { ArcherSlideComponent } from '../slides/archer-slide/archer-slide.component';

@@ -1,4 +1,4 @@
-import { QuestionBase } from './QuestionBase';
+import { QuestionBase } from './question-base';
 
 export class InputQuestion<T> extends QuestionBase<T> {
   controlType = 'input';

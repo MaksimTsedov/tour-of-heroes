@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder, FormArray } from '@angular/forms';
 import { HeroService } from '../Services/hero.service';
-import { Hero } from '../Classes/Hero';
+import { Hero } from '../Classes/hero';
 import { Location } from '@angular/common';
 import { dividedNamesValidator } from '../Validators/divided-names.directive';
-import { Skill } from '../Classes/Skill';
+import { Skill } from '../Classes/skill';
 
 @Component({
   selector: 'app-heroes-add-reactive',
@@ -33,7 +33,7 @@ export class HeroesAddReactiveComponent implements OnInit {
   get skills() { return this.heroForm.controls.skills as FormArray }
 
   onAddSkill() {
-    if (this.skills.length < 6) {
+    if (this.skills.length < 5) {
       this.skills.push(this.createSkillForm());
     }
   }

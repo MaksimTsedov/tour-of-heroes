@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HeroFormDataService } from '../Services/hero-form-data.service';
-import { Hero } from '../Classes/Hero';
+import { Hero } from '../Classes/hero';
 import { HeroService } from '../Services/hero.service';
 import { Location } from '@angular/common';
 

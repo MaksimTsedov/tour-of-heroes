@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Skill } from '../Classes/Skill';
+import { Skill } from '../Classes/skill';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 

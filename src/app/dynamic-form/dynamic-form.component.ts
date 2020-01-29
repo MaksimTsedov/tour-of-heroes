@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { QuestionBase } from '../Classes/QuestionBase';
+import { QuestionBase } from '../Classes/question-base';
 import { FormGroup } from '@angular/forms';
 import { QuestionControlService } from '../Services/question-control.service';
 

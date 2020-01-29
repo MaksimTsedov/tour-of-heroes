@@ -23,11 +23,12 @@ import { MageSlideComponent } from './slides/mage-slide/mage-slide.component';
 import { AssassinSlideComponent } from './slides/assassin-slide/assassin-slide.component';
 import { PriestSlideComponent } from './slides/priest-slide/priest-slide.component';
 import { SlideComponent } from './slides/slide/slide.component';
-import { GetClassPipe } from './getClass.pipe';
+import { GetClassPipe } from './get-class.pipe';
 import { HeroesAddReactiveComponent } from './heroes-add-reactive/heroes-add-reactive.component';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 import { DynamicFormQuestionComponent } from './dynamic-form-question/dynamic-form-question.component';
 import { HeroDynamicComponent } from './hero-dynamic/hero-dynamic.component';
+import { SkillFormComponent } from './skill-form/skill-form.component';
 
 @NgModule({
    imports: [
@@ -37,8 +38,7 @@ import { HeroDynamicComponent } from './hero-dynamic/hero-dynamic.component';
       AppRoutingModule,
       HttpClientModule,
       HttpClientInMemoryWebApiModule.forRoot(
-         InMemoryDataService, { dataEncapsulation: false }
-      )
+         InMemoryDataService, { dataEncapsulation: false })
    ],
    declarations: [
       AppComponent,
@@ -60,7 +60,8 @@ import { HeroDynamicComponent } from './hero-dynamic/hero-dynamic.component';
       HeroesAddReactiveComponent,
       DynamicFormComponent,
       DynamicFormQuestionComponent,
-      HeroDynamicComponent
+      HeroDynamicComponent,
+      SkillFormComponent
    ],
    entryComponents: [
       WarriorSlideComponent,

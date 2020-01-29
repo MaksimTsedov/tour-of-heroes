@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { QuestionBase } from '../Classes/QuestionBase';
+import { QuestionBase } from '../Classes/question-base';
 import { FormGroup } from '@angular/forms';
 import { InputQuestion } from '../Classes/question-input';
 import { NumberInputQuestion } from '../Classes/question-number-input';

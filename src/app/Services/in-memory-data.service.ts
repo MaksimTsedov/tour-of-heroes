@@ -1,8 +1,8 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Hero } from '../Classes/Hero';
+import { Hero } from '../Classes/hero';
 import { Injectable } from '@angular/core';
 import { HeroClass } from '../Classes/HeroClass.enum';
-import { Skill } from '../Classes/Skill';
+import { Skill } from '../Classes/skill';
 
 @Injectable({
   providedIn: 'root',
