@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormArray, Validators, FormBuilder } from '@angular/forms';
 import { Skill } from '../Classes/skill';
 
@@ -9,6 +9,7 @@ import { Skill } from '../Classes/skill';
 })
 export class SkillFormComponent implements OnInit {
   @Input() heroForm: FormGroup;
+  @Output() addSkill = new EventEmitter<Skill>();
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -22,16 +23,18 @@ export class SkillFormComponent implements OnInit {
       this.skills.push(this.createSkillForm());
     }
   }
-  
-  trackById (index, item: Skill) {
+
+  trackById(item: Skill) {
     return item.id;
   }
 
-  private createSkillForm() : FormGroup {
+  private createSkillForm(): FormGroup {
+
     return this.formBuilder.group({
       naming: ['', Validators.required],
       description: ['', [Validators.required, Validators.maxLength(500)]],
-      level: [,[Validators.min(1), Validators.max(10)]]
+      level: [, [Validators.min(1), Validators.max(10)]]
     });
   }
 }
+

@@ -1,23 +1,25 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Hero } from '../Classes/hero';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { HeroService } from '../Services/hero.service';
 import { HeroClass } from '../Classes/HeroClass.enum';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormArray, Validators } from '@angular/forms';
+import { SkillFormComponent } from '../skill-form/skill-form.component';
 
 @Component({
   selector: 'app-hero-detail',
   templateUrl: './hero-detail.component.html',
-  styleUrls: ['./hero-detail.component.css']
+  styleUrls: ['./hero-detail.component.css'],
 })
 export class HeroDetailComponent implements OnInit {
   @Input() hero: Hero;
-  heroForm = this.formBuilder.group({
+  @ViewChild(SkillFormComponent, { static: false }) skillChild: SkillFormComponent;
+  skillForm = this.formBuilder.group({
     skills: this.formBuilder.array([])
-  });
-  
+  })
+
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
@@ -29,11 +31,13 @@ export class HeroDetailComponent implements OnInit {
     this.getHero();
   }
 
+  get skills() { return this.skillForm.controls.skills as FormArray }
+
   getHero(): void {
     const id: number = +this.route.snapshot.paramMap.get('id');
     if (id !== 0) {
       this.heroService.getHero(id)
-        .subscribe(hero => this.hero = hero);
+        .subscribe(hero => { this.hero = hero; this.pullSkills() });
     } else {
       this.hero = new Hero();
     }
@@ -58,11 +62,24 @@ export class HeroDetailComponent implements OnInit {
   save(): void {
     if (this.hero.id) {
       this.heroService.updateHero(this.hero)
-      .subscribe(() => this.goBack());
+        .subscribe(() => this.goBack());
     } else {
       this.hero.heroClass = HeroClass[this.hero.heroClass];
       this.heroService.addHero(this.hero)
-      .subscribe(() => this.goBack());
+        .subscribe(() => this.goBack());
+    }
+  }
+
+  private pullSkills(): void {
+    if (this.hero.id && this.hero.skills) {
+      if (this.hero.skills.length > 0) {
+        this.hero.skills.forEach(skill => this.skills.push(
+          this.formBuilder.group({
+            naming: [skill.naming, Validators.required],
+            description: [skill.description, [Validators.required, Validators.maxLength(500)]],
+            level: [skill.level, [Validators.min(1), Validators.max(10)]]
+          })));
+      }
     }
   }
 }

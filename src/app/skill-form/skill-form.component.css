@@ -18,6 +18,13 @@
     padding-left: .4em;
     margin-bottom: .5em;
   }
+
+  textarea {
+    resize: none;
+    font-size: 1em;
+    padding-left: .4em;
+    margin-bottom: .5em;
+  }
   
   button {
     font-family: Arial;
