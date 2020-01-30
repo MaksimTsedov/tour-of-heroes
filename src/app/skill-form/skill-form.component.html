@@ -1,34 +1,40 @@
 <div>
-  <button type="button" (click)="onAddSkill()">Add skill</button>
+  <button type="button" (click)="onAddSkill()" [disabled]="skills.length > 4">Add skill</button>
+  <span *ngIf="skills.length > 4">
+    Maximum skills reached.
+  </span>
 </div>
 
-<div formArrayName="skills">
-  <div *ngFor="let skill of skills.controls; trackBy: trackById; let i = index;">
-    <h4> Skill №{{i + 1}} </h4>
-    <div [formGroup]="skill">
-      <div>
-        <label>
-          Naming:
-          <input type="text" formControlName="naming">
-        </label>
-      </div>
-      <div>
-        <label>
-          Desciption:
-          <textarea rows="4" cols="50" formControlName="description">
+
+
+<div [formGroup]="heroForm">
+  <div formArrayName="skills">
+    <div *ngFor="let skill of skills.controls; trackBy: trackById; let i = index;">
+      <h4> Skill №{{i + 1}} </h4>
+      <div [formGroup]="skill">
+        <div>
+          <label>
+            Naming:
+            <input type="text" formControlName="naming">
+          </label>
+        </div>
+        <div>
+          <label>
+            Desciption:
+            <textarea rows="4" cols="50" formControlName="description">
           </textarea>
-        </label>
+          </label>
+        </div>
+        <div>
+          <label>
+            Level:
+            <input type="number" formControlName="level">
+          </label>
+        </div>
       </div>
       <div>
-        <label>
-          Level:
-          <input type="number" formControlName="level">
-        </label>
+        <button type="button" (click)="onRemoveSkill(i)">Delete skill</button>
       </div>
-    </div>
-    <div>
-      <button type="button" (click)="onRemoveSkill(i)">Delete skill</button>
     </div>
   </div>
 </div>
-
