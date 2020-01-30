@@ -7,6 +7,8 @@ import { HeroService } from '../Services/hero.service';
 import { HeroClass } from '../Classes/HeroClass.enum';
 import { FormBuilder, FormArray, Validators } from '@angular/forms';
 import { SkillFormComponent } from '../skill-form/skill-form.component';
+import { SkillService } from '../services/skill.service';
+import { FormHelperFunctions } from '../helpers/form-helper-functions';
 
 @Component({
   selector: 'app-hero-detail',
@@ -23,6 +25,7 @@ export class HeroDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
+    private skillService: SkillService,
     private location: Location,
     private formBuilder: FormBuilder,
   ) { }
@@ -60,6 +63,14 @@ export class HeroDetailComponent implements OnInit {
   }
 
   save(): void {
+    let skillArr = FormHelperFunctions.getSkillsArray(this.skillForm.get('skills') as FormArray);
+    if (skillArr.length > 0) {
+      this.hero.skills = skillArr;
+
+      skillArr.forEach(skill =>
+        this.skillService.addSkill(skill).subscribe())
+    }
+
     if (this.hero.id) {
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());

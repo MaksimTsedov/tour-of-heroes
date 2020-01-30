@@ -4,8 +4,8 @@ import { HeroService } from '../Services/hero.service';
 import { Hero } from '../Classes/hero';
 import { Location } from '@angular/common';
 import { dividedNamesValidator } from '../Validators/divided-names.directive';
-import { Skill } from '../Classes/skill';
 import { SkillService } from '../services/skill.service';
+import { FormHelperFunctions } from '../helpers/form-helper-functions';
 
 @Component({
   selector: 'app-heroes-add-reactive',
@@ -48,17 +48,17 @@ export class HeroesAddReactiveComponent implements OnInit {
     const characterControl = this.heroForm.get('character') as FormGroup;
     hero.isEvil = characterControl.get('isEvil').value;
     hero.heroClass = characterControl.get('heroClass').value;
-    let skillArr = this.getSkillsArray();
+    let skillArr = FormHelperFunctions.getSkillsArray(this.heroForm.get('skills') as FormArray);
     if (skillArr.length > 0) {
       hero.skills = skillArr;
 
       skillArr.forEach(skill =>
         this.skillService.addSkill(skill).subscribe())
     }
-    
+
     this.heroService.addHero(hero)
       .subscribe();
-    
+
     this.location.back();
   }
 
@@ -66,20 +66,6 @@ export class HeroesAddReactiveComponent implements OnInit {
     return this.heroService.getHeroesClasses();
   }
 
-  private getSkillsArray(): Skill[] {
-    let skillsArray = [] as Skill[];
-    for (const item of (this.heroForm.get('skills') as FormArray).controls) {
-      let skillObject = new Skill(
-        {
-          naming: item.get('naming').value,
-          description: item.get('description').value,
-          level: +item.get('level').value
-        }
-      )
-
-      if (skillObject) skillsArray.push(skillObject);
-    }
-
-    return skillsArray;
-  }
 }
+
+
