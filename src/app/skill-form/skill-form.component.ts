@@ -24,6 +24,10 @@ export class SkillFormComponent implements OnInit {
     }
   }
 
+  onRemoveSkill(index: number) {
+    this.skills.removeAt(index);
+  }
+
   trackById(item: Skill) {
     return item.id;
   }

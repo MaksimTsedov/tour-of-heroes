@@ -20,16 +20,16 @@ export class SkillService {
     return this.httpClient.get<Skill[]>(this.skillsUrl);
   }
 
-  getHero(id: number): Observable<Skill> {
+  getSkill(id: number): Observable<Skill> {
     const url = `${this.skillsUrl}/${id}`;
     return this.httpClient.get<Skill>(url);
   }
 
-  updateHero(skill: Skill): Observable<any> {
+  updateSkill(skill: Skill): Observable<any> {
     return this.httpClient.put(this.skillsUrl, skill, this.httpOptions);
   }
 
-  addHero(skill: Skill): Observable<Skill> {
+  addSkill(skill: Skill): Observable<Skill> {
     return this.httpClient.post(this.skillsUrl, skill, this.httpOptions).pipe(
       tap((newSkill: Skill) => {})
     );
