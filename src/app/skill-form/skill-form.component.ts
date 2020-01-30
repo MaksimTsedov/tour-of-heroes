@@ -9,7 +9,6 @@ import { Skill } from '../Classes/skill';
 })
 export class SkillFormComponent implements OnInit {
   @Input() heroForm: FormGroup;
-  @Output() addSkill = new EventEmitter<Skill>();
 
   constructor(private formBuilder: FormBuilder) { }
 
@@ -33,7 +32,6 @@ export class SkillFormComponent implements OnInit {
   }
 
   private createSkillForm(): FormGroup {
-
     return this.formBuilder.group({
       naming: ['', Validators.required],
       description: ['', [Validators.required, Validators.maxLength(500)]],
