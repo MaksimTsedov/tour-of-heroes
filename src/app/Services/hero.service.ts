@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Hero } from '../Classes/hero';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
-import { catchError, map, tap, toArray } from 'rxjs/operators';
+import { catchError, map, tap, toArray, take } from 'rxjs/operators';
 import { HeroClass } from '../Classes/HeroClass.enum';
 
 @Injectable({
@@ -33,7 +33,8 @@ export class HeroService {
     return this.httpClient.get<Hero>(url)
       .pipe(
         tap(_ => this.log(`fetched hero id=${id}`)),
-        catchError(this.handleError<Hero>(`getHero id=${id}`))
+        catchError(this.handleError<Hero>(`getHero id=${id}`)),
+        take(1)
       );
   }
 
